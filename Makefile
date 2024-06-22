@@ -9,7 +9,7 @@ INCLUDES = MLX42/build/libmlx42.a MLX42/build/libglfw3.a -Iinclude -lm -framewor
 
 NAME = fdf
 OBJS = $(SRCS:.c=.o)
-LIBFT=libft/libft.a
+LIBFT=libftt/libft.a
 
 
 all : $(NAME)
@@ -18,18 +18,18 @@ $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(LIBFT) $(INCLUDES) $(OBJS) -o $(NAME)
 
 $(LIBFT):
-	make -C libft/
+	make -C libftt/
 
 clean:
 	@$(RM) $(OBJS) 
-	@make clean -C libft
+	@make clean -C libftt
 
 %.o : %.c $(HEADERS) 
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 fclean : clean 
 		@$(RM) $(NAME) 
-		@make fclean -C libft
+		@make fclean -C libftt
 
 re : fclean all 
 

@@ -6,14 +6,14 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:41:07 by ochouati          #+#    #+#             */
-/*   Updated: 2024/06/07 14:30:00 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:55:00 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../libft/libft.h"
+# include "../libftt/libft.h"
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "fdf_data.h"
 # include <fcntl.h>
