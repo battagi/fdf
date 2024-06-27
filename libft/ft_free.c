@@ -5,12 +5,12 @@ void	ft_free(char **str)
 	int i;
 
 	i = 0;
-	if (!str)
+	if (!str || !*str)
 		return ;
 	while (str[i])
 	{
 		free(str[i]);
-        i++;
+		i++;
 	}
 	free(str);
 }

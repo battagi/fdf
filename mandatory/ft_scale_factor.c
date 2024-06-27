@@ -6,7 +6,7 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:08:36 by abattagi          #+#    #+#             */
-/*   Updated: 2024/06/07 16:14:13 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/06/22 20:47:12 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ float	ft_scale_factor(float columns, float rows)
 {
 	float	scale_f;
 
-	if (900 / columns < 900 / rows)
-		scale_f = 900 / columns;
+	if (1100 / columns < 1100 / rows)
+		scale_f = 1100 / columns;
 	else
-		scale_f = 900 / rows;
+		scale_f = 1100 / rows;
 	return (scale_f);
 }
 

@@ -6,12 +6,13 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 10:49:23 by abattagi          #+#    #+#             */
-/*   Updated: 2024/05/18 10:49:24 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:41:59 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
+
 
 char	*read_line(char **rest, int fd)
 {

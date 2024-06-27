@@ -6,7 +6,7 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:09:13 by abattagi          #+#    #+#             */
-/*   Updated: 2024/06/07 16:09:16 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:56:28 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ typedef struct s_cdim
 	float		t_y;
 	float		scale_factor;
 }				t_cdim;
-
 #endif

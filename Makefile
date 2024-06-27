@@ -1,15 +1,16 @@
 CC = cc
- CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf  
 HEADERS = ./mandatory/fdf.h 
-SRCS = mandatory/main.c  mandatory/ft_map_points.c   mandatory/transfomation_matrix.c mandatory/ft_draw_map.c mandatory/ft_scale_factor.c mandatory/ft_iso_calcul.c
+SRCS = mandatory/main.c  mandatory/ft_map_points.c   mandatory/transfomation_matrix.c mandatory/ft_draw_map.c mandatory/ft_scale_factor.c mandatory/ft_iso_calcul.c mandatory/tools.c
 
 INCLUDES = MLX42/build/libmlx42.a MLX42/build/libglfw3.a -Iinclude -lm -framework Cocoa -framework OpenGL -framework IOKit
 
 NAME = fdf
 OBJS = $(SRCS:.c=.o)
 LIBFT=libft/libft.a
+
 
 
 all : $(NAME)

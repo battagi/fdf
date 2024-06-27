@@ -6,7 +6,7 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:52:12 by abattagi          #+#    #+#             */
-/*   Updated: 2024/06/07 18:22:34 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:31:59 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,46 @@ t_dimensions	ft_dimension(char *map)
 	char			**tmp;
 	char			*line;
 	t_dimensions	dm;
-	int				i;
 
-	i = 0;
 	fd = open(map, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-		return (close(fd), exit(1), dm);
+		ft_exit(fd);
 	dm.rows = 1;
 	tmp = ft_split(line, ' ');
+	if (!tmp)
+		ft_exit(fd);
 	dm.columns = ft_split_count(tmp);
-	while (get_next_line(fd))
+	free(line);
+	line = get_next_line(fd);
+	while (line)
 	{
-		dm.rows = dm.rows + 1;
+		dm.rows++;
+		free(line);
+		line = get_next_line(fd);
 	}
 	ft_free(tmp);
-	free(line);
 	close(fd);
 	return (dm);
 }
 
-t_point	*ft_get_point(char *line, int y, int columns, int rows)
+t_point	*ft_get_point(char *line, int y, int columns)
 {
 	t_point	*point;
 	char	**tmp;
 	int		i;
 
-	(void)rows;
 	i = 0;
 	tmp = ft_split(line, ' ');
+	if (!tmp)
+	{
+		ft_free(tmp);
+		ft_free_exit(line);
+	}
 	point = malloc(sizeof(t_point) * columns);
 	if (!point)
-		exit(1);
-	while (tmp[i] && i < columns)
+		ft_free_exit(line);
+	while (tmp[i] != '\0' && i < columns)
 	{
 		point[i].x = i;
 		point[i].y = y;
@@ -60,32 +67,34 @@ t_point	*ft_get_point(char *line, int y, int columns, int rows)
 		point[i].color = ft_get_color(tmp[i]);
 		i++;
 	}
-	i = 0;
-	while (tmp[i])
-		free(tmp[i++]);
-	free(tmp);
-	return (point);
+	return (ft_free(tmp), point);
 }
-t_point	**ft_map(char *map, t_dimensions dm)
+
+void ft_map(char *map, t_dimensions dm, t_point **map_points, int i)
 {
-	t_point	**map_points;
 	char	*line;
 	int		fd;
-	int		i;
 
-	i = 0;
-	map_points = malloc(sizeof(t_point *) * dm.rows);
-	if (!map_points)
-		exit(1);
 	fd = open(map, O_RDONLY);
 	line = get_next_line(fd);
-	while (line && i < dm.rows)
+	if (!line)
 	{
-		map_points[i] = ft_get_point(line, i, dm.columns, dm.rows);
+		 while (i < dm.rows && map_points[i])
+        {
+            free(map_points[i]); 
+            i++;
+        }
+        free(map_points);
+		free(line);
+		exit(1);
+	}
+	while (line && i < dm.rows)
+	{	
+		map_points[i] = ft_get_point(line, i, dm.columns);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
 	free(line);
-	return (map_points);
+	close(fd);
 }
