@@ -6,21 +6,21 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:41:07 by ochouati          #+#    #+#             */
-/*   Updated: 2024/06/27 15:14:36 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/01 13:22:55 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../libft/libft.h"  
+# include "../libft/libft.h"
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "fdf_data.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdint.h>
 # include <stdlib.h>
-# define BASE1 "0123456789ABCDEF" 
+# define BASE1 "0123456789ABCDEF"
 # define BASE2 "0123456789abcdef"
 
 t_dimensions	ft_dimension(char *map);
@@ -38,6 +38,7 @@ uint32_t		ft_get_color(char *str);
 int				test_name(char *str);
 void			key_hook(struct mlx_key_data key_data, void *param);
 void			ft_exit(int fd);
-void            ft_free_exit(char *tmp);
+void			ft_free_exit(char *tmp);
+void			ft_error(int i);
 
-#endif
+#endif	

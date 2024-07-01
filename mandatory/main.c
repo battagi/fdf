@@ -6,7 +6,7 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 19:36:40 by ochouati          #+#    #+#             */
-/*   Updated: 2024/06/27 15:15:25 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/01 15:19:49 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,25 @@ void	map_parser(char *map, mlx_image_t *img)
 	ft_map(map, dm, map_points, 0);
 	nwdm = ft_iso_calcul(map_points, dm);
 	ft_draw_map(map_points, dm, img, nwdm);
-	i = 0;	
+	i = 0;
 	while (i < dm.rows)
-    {
-        free(map_points[i]); 
-        i++;
-    }
-    free(map_points);
+	{
+		free(map_points[i]);
+		i++;
+	}
+	free(map_points);
 }
 
-void key_hook(struct mlx_key_data key_data, void *param)
+void	key_hook(struct mlx_key_data key_data, void *param)
 {
-    mlx_t *mlx = (mlx_t *)param;
-    if (key_data.os_key == 53)
-    {
-        mlx_terminate(mlx);
-        exit(0);
-    }
+	mlx_t	*mlx;
+
+	mlx = (mlx_t *)param;
+	if (key_data.os_key == 53)
+	{
+		mlx_terminate(mlx);
+		exit(0);
+	}
 }
 
 int	test_name(char *str)
@@ -72,17 +74,21 @@ int	main(int argc, char **argv)
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_increment	b2;
-	
-	(void)argc;
-	ft_bzero(&b2, sizeof(t_increment));
-	mlx = mlx_init(1920, 1200, "FDF", false);
-	if (!mlx)
-		return (1);
-	img = mlx_new_image(mlx, 1920, 1200);
-	if (!img)
-		return (1);
-	map_parser(argv[1], img);
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_key_hook(mlx, key_hook, mlx);
-	mlx_loop(mlx);
+
+	if (argc == 2)
+	{
+		if (argv[1] == NULL || argv[1][0] == '\0')
+			ft_error(1);
+		else{ft_bzero(&b2, sizeof(t_increment));
+		mlx = mlx_init(1920, 1200, "FDF", false);
+		if (!mlx)
+			return (1);
+		img = mlx_new_image(mlx, 1920, 1200);
+		if (!img)
+			return (1);
+		map_parser(argv[1], img);
+		mlx_image_to_window(mlx, img, 0, 0);
+		mlx_key_hook(mlx, key_hook, mlx);
+		mlx_loop(mlx);}
+	}
 }

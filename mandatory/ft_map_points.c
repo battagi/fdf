@@ -6,7 +6,7 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:52:12 by abattagi          #+#    #+#             */
-/*   Updated: 2024/06/27 14:31:59 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:04:24 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_point	*ft_get_point(char *line, int y, int columns)
 	return (ft_free(tmp), point);
 }
 
-void ft_map(char *map, t_dimensions dm, t_point **map_points, int i)
+void	ft_map(char *map, t_dimensions dm, t_point **map_points, int i)
 {
 	char	*line;
 	int		fd;
@@ -79,17 +79,17 @@ void ft_map(char *map, t_dimensions dm, t_point **map_points, int i)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		 while (i < dm.rows && map_points[i])
-        {
-            free(map_points[i]); 
-            i++;
-        }
-        free(map_points);
+		while (i < dm.rows && map_points[i])
+		{
+			free(map_points[i]);
+			i++;
+		}
+		free(map_points);
 		free(line);
 		exit(1);
 	}
 	while (line && i < dm.rows)
-	{	
+	{
 		map_points[i] = ft_get_point(line, i, dm.columns);
 		free(line);
 		line = get_next_line(fd);

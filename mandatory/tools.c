@@ -6,19 +6,20 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:44:53 by abattagi          #+#    #+#             */
-/*   Updated: 2024/06/27 14:29:44 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:05:27 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void    ft_exit(int fd)
+void	ft_exit(int fd)
 {
-    close(fd);
-    exit(1);
+	close(fd);
+	exit(1);
 }
-void    ft_free_exit(char *tmp)
+
+void	ft_free_exit(char *tmp)
 {
-    free(tmp);
-    exit(1);
+	free(tmp);
+	exit(1);
 }
