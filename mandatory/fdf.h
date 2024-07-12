@@ -6,10 +6,9 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:51:43 by abattagi          #+#    #+#             */
-/*   Updated: 2024/07/05 05:43:44 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/05 05:58:52 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_H
 # define FDF_H
@@ -23,7 +22,7 @@
 # include <stdlib.h>
 # define BASE1 "0123456789ABCDEF"
 # define BASE2 "0123456789abcdef"
-#include<stdio.h>
+# include <stdio.h>
 
 t_dimensions	ft_dimension(char *map);
 t_point			*ft_get_point(char *line, int y, int columns);
@@ -43,8 +42,7 @@ void			ft_exit(int fd);
 void			ft_free_exit(char *tmp);
 void			ft_error_exit(void);
 int				check_map(char *map);
-void ft_initial(void);
-void ft_columes(char *map, t_dimensions dm);
-// static int	rows_count(char *line);
+void			ft_initial(void);
+void			ft_columes(char *map, t_dimensions dm);
 
 #endif

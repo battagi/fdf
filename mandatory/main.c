@@ -6,10 +6,9 @@
 /*   By: abattagi <abattagi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:51:18 by abattagi          #+#    #+#             */
-/*   Updated: 2024/07/05 05:51:49 by abattagi         ###   ########.fr       */
+/*   Updated: 2024/07/05 22:35:38 by abattagi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "fdf.h"
 
@@ -21,7 +20,6 @@ void	map_parser(char *map, mlx_image_t *img)
 	int				i;
 
 	ft_initial();
-
 	dm = ft_dimension(map);
 	map_points = malloc(sizeof(t_point *) * dm.rows);
 	if (!map_points)
@@ -61,36 +59,34 @@ int	test_name(char *str)
 	while (str[i])
 	{
 		if (str[i] != *fdf)
-				return (1);
+			return (1);
 		i++;
 		fdf++;
 	}
 	return (0);
 }
 
-#include<stdio.h>
 int	main(int argc, char **argv)
 {
-    mlx_t		*mlx;
-    mlx_image_t	*img;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 
-    if (argc == 2 && test_name(argv[1]) == 0 && check_map(argv[1]) != 1)
-    {
-            mlx = mlx_init(1920, 1200, "FDF", false);
-            if (!mlx)
-                return (1);
-            img = mlx_new_image(mlx, 1920, 1200);
-            if (!img)
-                return (1);
-            map_parser(argv[1], img);
-            mlx_image_to_window(mlx, img, 0, 0);
-            mlx_key_hook(mlx, key_hook, mlx);
-            mlx_loop(mlx);
-    
-    }
-    else
-    {
-        write(1, "error\n", 6);
-        exit(1);
-    }
+	if (argc == 2 && test_name(argv[1]) == 0 && check_map(argv[1]) != 1)
+	{
+		mlx = mlx_init(1920, 1200, "FDF", false);
+		if (!mlx)
+			return (1);
+		img = mlx_new_image(mlx, 1920, 1200);
+		if (!img)
+			return (1);
+		map_parser(argv[1], img);
+		mlx_image_to_window(mlx, img, 0, 0);
+		mlx_key_hook(mlx, key_hook, mlx);
+		mlx_loop(mlx);
+	}
+	else
+	{
+		write(1, "error\n", 6);
+		exit(1);
+	}
 }
